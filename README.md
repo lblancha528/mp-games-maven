@@ -4,8 +4,9 @@ A mini-project for Grinnell's CSC-207.
 
 Authors:
 
-* Your Name Here
-* Your Name Here
+* Lily Blanchard
+* Tiffany Yan
+* Natalie Nardone
 * Samuel A. Rebelsky (Starter code)
 
 Instructions:
