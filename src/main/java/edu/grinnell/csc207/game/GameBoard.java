@@ -35,16 +35,7 @@ public class GameBoard {
    * Constructs a new game board with default dimensions.
    */
   public GameBoard() {
-    this.board = new MatrixV0<>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-    this.height = DEFAULT_HEIGHT;
-    this.width = DEFAULT_WIDTH;
-
-    // fill out the board with the three elements randomly.
-    for (int i = 0; i < this.width; i++) {
-      for (int j = 0; j < this.height; j++) {
-        board.set(i, j, generateRandomPiece());
-      }
-    }
+    new GameBoard(DEFAULT_WIDTH, DEFAULT_HEIGHT);
   } // GameBoard()
 
   /**
@@ -56,7 +47,7 @@ public class GameBoard {
    * @param width the provided width of the game board
    */
   public GameBoard(int height, int width) {
-    this.board = new MatrixV0<>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    this.board = new MatrixV0<>(width, height);
     this.height = height;
     this.width = width;
     // fill out the board with the three elements randomly.
@@ -107,4 +98,12 @@ public class GameBoard {
   public int height() {
     return this.height;
   } // height()
+
+
+  /**
+   * Gets the specified value from the board
+   * @param row
+   * @param col
+   * @return value
+   */
 } // class GameBoard

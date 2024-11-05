@@ -7,6 +7,8 @@ public class RunGame {
   // build logic that builds -> with config info
   // handles user input -> uses gameLogic to handle user commands
 
+  // space is null character for removed pieces
+
   /* 
   while checkOver = false {
     get user input 
