@@ -54,8 +54,8 @@ public class GameBoard {
     for (int i = 0; i < this.width; i++) {
       for (int j = 0; j < this.height; j++) {
         board.set(i, j, generateRandomPiece());
-      } //for
-    } //for
+      } // for
+    } // for
   } // GameBoard(int, int)
 
   // +---------+----------------------------------------------------
@@ -101,9 +101,24 @@ public class GameBoard {
 
 
   /**
-   * Gets the specified value from the board
+   * Sets the specified value from the board
+   * 
    * @param row
    * @param col
-   * @return value
+   * @param val
    */
+  public void set(int row, int col, char val) {
+    this.board.set(row, col, val);
+  } // set
+
+  /**
+   * Gets the value corresponding to the specified row and col
+   * 
+   * @param row
+   * @param col
+   * @return the value at the index
+   */
+  public char get(int row, int col) {
+    return (char)this.board.get(row,col);
+  } //get
 } // class GameBoard
