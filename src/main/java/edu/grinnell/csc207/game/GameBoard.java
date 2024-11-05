@@ -1,5 +1,9 @@
 package edu.grinnell.csc207.game;
+
+import java.util.Random;
+
 import edu.grinnell.csc207.util.MatrixV0;
+
 
 public class GameBoard {
   // +--------+------------------------------------------------------
@@ -30,21 +34,37 @@ public class GameBoard {
   /**
    * Constructs a new game board with default dimensions.
    */
-  public GameBoard () {
+  public GameBoard() {
+    this.board = new MatrixV0<>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    this.height = DEFAULT_HEIGHT;
+    this.width = DEFAULT_WIDTH;
 
+    // fill out the board with the three elements randomly.
+    for (int i = 0; i < this.width; i++) {
+      for (int j = 0; j < this.height; j++) {
+        board.set(i, j, generateRandomPiece());
+      }
+    }
   } // GameBoard()
 
   /**
    * Constructs a new game board with user provided dimensions.
+   * 
    * @pre Minimum height or width of 4.
    * 
-   * @param height
-   *   the provided height of the game board
-   * @param width
-   *   the provided width of the game board
+   * @param height the provided height of the game board
+   * @param width the provided width of the game board
    */
-  public GameBoard (int height, int width) {
-
+  public GameBoard(int height, int width) {
+    this.board = new MatrixV0<>(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    this.height = height;
+    this.width = width;
+    // fill out the board with the three elements randomly.
+    for (int i = 0; i < this.width; i++) {
+      for (int j = 0; j < this.height; j++) {
+        board.set(i, j, generateRandomPiece());
+      } //for
+    } //for
   } // GameBoard(int, int)
 
   // +---------+----------------------------------------------------
@@ -53,27 +73,38 @@ public class GameBoard {
 
   /**
    * Generates a random game piece.
+   * 
    * @return a random game piece
    */
-  public static char generateRandomPiece () {
-  // generates a random number 1, 2, 3
-  // returns the corresponding game piece char
-  return 'a';
+  public static char generateRandomPiece() {
+    // generates a random number 1, 2, 3
+    // returns the corresponding game piece char
+    Random rand = new Random();
+
+    int random = rand.nextInt(2);
+    if (random == 0) {
+      return pieceX;
+    } else if (random == 1) {
+      return pieceT;
+    } // if
+    return pieceO;
   } // generateRandomPiece()
 
   /**
    * The width.
+   * 
    * @return the width
    */
-  public int width () {
+  public int width() {
     return this.width;
   } // width()
 
   /**
    * The height.
+   * 
    * @return the height
    */
-  public int height () {
+  public int height() {
     return this.height;
   } // height()
 } // class GameBoard
