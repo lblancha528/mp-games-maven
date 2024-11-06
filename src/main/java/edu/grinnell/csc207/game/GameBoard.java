@@ -2,8 +2,8 @@ package edu.grinnell.csc207.game;
 
 import java.io.PrintWriter;
 import java.util.Random;
-import edu.grinnell.csc207.util.Matrix;
 
+import edu.grinnell.csc207.util.Matrix;
 import edu.grinnell.csc207.util.MatrixV0;
 
 /**
@@ -81,7 +81,7 @@ public class GameBoard {
     // returns the corresponding game piece char
     Random rand = new Random();
 
-    int random = rand.nextInt(2);
+    int random = rand.nextInt(3);
     if (random == 0) {
       return pieceX;
     } else if (random == 1) {

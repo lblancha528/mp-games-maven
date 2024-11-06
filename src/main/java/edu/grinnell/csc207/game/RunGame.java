@@ -30,5 +30,4 @@ public static void main(String args[]) {
   GameBoard newBoard = new GameBoard(6, 8);
   newBoard.printBoard();
 }
-  
 }
