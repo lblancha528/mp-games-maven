@@ -28,6 +28,7 @@ public class RunGame {
     */
 public void main() {
   GameBoard newBoard = new GameBoard(6, 8);
+  newBoard.printBoard();
 }
   
 }

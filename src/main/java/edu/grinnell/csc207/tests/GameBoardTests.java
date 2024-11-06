@@ -1,4 +1,5 @@
 package edu.grinnell.csc207.tests;
+import java.beans.Transient;
 import edu.grinnell.csc207.game.GameBoard; 
 import edu.grinnell.csc207.game.GameLogic; 
 
@@ -19,4 +20,7 @@ public class GameBoardTests {
   // +-------+-------------------------------------------------------
   // | Tests |
   // +-------+
+
+  @Test 
+  public void 
 }

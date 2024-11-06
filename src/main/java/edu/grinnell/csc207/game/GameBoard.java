@@ -2,6 +2,7 @@ package edu.grinnell.csc207.game;
 
 import java.io.PrintWriter;
 import java.util.Random;
+import edu.grinnell.csc207.util.Matrix;
 
 import edu.grinnell.csc207.util.MatrixV0;
 
@@ -134,6 +135,6 @@ public class GameBoard {
    * Prints the current game board status.
    */
   public void printBoard() {
-    this.board.print();
+    Matrix.print(new PrintWriter(System.out, true), this.board);
   }
 } // class GameBoard
