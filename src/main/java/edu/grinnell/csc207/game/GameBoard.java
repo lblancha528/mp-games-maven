@@ -1,21 +1,29 @@
 package edu.grinnell.csc207.game;
 
+import java.io.PrintWriter;
 import java.util.Random;
 
 import edu.grinnell.csc207.util.MatrixV0;
 
-
+/**
+ * This class houses the game board matrix and the functions that 
+ *   interact with the matrix directly.
+ * @author Lily Blanchard
+ * @author Natalie Nardone
+ * @author Tiffany Yan
+ */
 public class GameBoard {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
 
   /** A matrix to represent the board state. */
-  MatrixV0 board;
+  MatrixV0<Character> board;
 
-  static char pieceX = 'X';
-  static char pieceO = 'O';
-  static char pieceT = 'T';
+  static Character pieceX = 'X';
+  static Character pieceO = 'O';
+  static Character pieceT = 'T';
+  static Character space = ' ';
 
   /** The height of the board. */
   int height;
@@ -47,7 +55,7 @@ public class GameBoard {
    * @param width the provided width of the game board
    */
   public GameBoard(int height, int width) {
-    this.board = new MatrixV0<>(width, height);
+    this.board = new MatrixV0(width, height, ' ');
     this.height = height;
     this.width = width;
     // fill out the board with the three elements randomly.
@@ -121,4 +129,11 @@ public class GameBoard {
   public char get(int row, int col) {
     return (char)this.board.get(row,col);
   } //get
+
+  /**
+   * Prints the current game board status.
+   */
+  public void printBoard() {
+    this.board.print();
+  }
 } // class GameBoard

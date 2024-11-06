@@ -1,5 +1,11 @@
 package edu.grinnell.csc207.game;
 
+/**
+ * This class handles the user interface and interactions.
+ * @author Lily Blanchard
+ * @author Natalie Nardone
+ * @author Tiffany Yan
+ */
 public class RunGame {
   // main
   // build board
@@ -20,6 +26,8 @@ public class RunGame {
     }
   }
     */
-
-    
+public void main() {
+  GameBoard newBoard = new GameBoard(6, 8);
+}
+  
 }

@@ -1,5 +1,12 @@
 package edu.grinnell.csc207.game;
 
+/**
+ * This class handles the game board status effects including checking when 
+ *   the game is over, checking if a move is valid, and executing that move.
+ * @author Lily Blanchard
+ * @author Natalie Nardone
+ * @author Tiffany Yan
+ */
 public class GameLogic {
   // field that is the board
   // check if game is over
@@ -13,10 +20,10 @@ public class GameLogic {
   GameBoard board;
 
   //* The possible directions. */
-  char UP = 'u';
-  char DOWN = 'd';
-  char LEFT = 'l';
-  char RIGHT = 'r';
+  final char UP = 'u';
+  final char DOWN = 'd';
+  final char LEFT = 'l';
+  final char RIGHT = 'r';
 
   // +--------------+-----------------------------------------------
   // | Constructors |
@@ -71,8 +78,8 @@ public class GameLogic {
     } else {
       // make helper method
       char first = board.get(row,col);
-      int newRow;
-      int newCol;
+      int newRow = 0;
+      int newCol = 0;
       switch (direction) {
         case UP :     newCol = col - 1; newRow = row; break;
         case DOWN :   newCol = col + 1; newRow = row; break;
@@ -105,8 +112,8 @@ public class GameLogic {
    */
   public void swapPieces(int row, int col, char direction) {
     char first = board.get(row,col);
-    int newRow;
-    int newCol;
+    int newRow = 0;
+    int newCol = 0;
     switch (direction) {
       case UP :     newCol = col - 1; newRow = row; break;
       case DOWN :   newCol = col + 1; newRow = row; break;
