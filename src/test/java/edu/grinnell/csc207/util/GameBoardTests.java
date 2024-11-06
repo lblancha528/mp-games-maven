@@ -1,7 +1,15 @@
-package edu.grinnell.csc207.tests;
+package edu.grinnell.csc207.util;
 import java.beans.Transient;
 import edu.grinnell.csc207.game.GameBoard; 
 import edu.grinnell.csc207.game.GameLogic; 
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for individual functions in GameBoard and GameLogic.
@@ -22,5 +30,7 @@ public class GameBoardTests {
   // +-------+
 
   @Test 
-  public void 
+  public void testOne() {
+
+  }
 }

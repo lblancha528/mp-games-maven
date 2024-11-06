@@ -136,5 +136,5 @@ public class GameBoard {
    */
   public void printBoard() {
     Matrix.print(new PrintWriter(System.out, true), this.board);
-  }
+  } // printBoard()
 } // class GameBoard
