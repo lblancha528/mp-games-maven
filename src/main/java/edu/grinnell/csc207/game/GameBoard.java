@@ -56,15 +56,19 @@ public class GameBoard {
    * @param width the provided width of the game board
    */
   public GameBoard(int height, int width) {
-    this.board = new MatrixV0(width, height, ' ');
-    this.height = height;
-    this.width = width;
-    // fill out the board with the three elements randomly.
-    for (int i = 0; i < this.height; i++) {
-      for (int j = 0; j < this.width; j++) {
-        board.set(i, j, generateRandomPiece());
+    if (width < 4 || height < 4) {
+      new GameBoard();
+    } else {
+      this.board = new MatrixV0(width, height, ' ');
+      this.height = height;
+      this.width = width;
+      // fill out the board with the three elements randomly.
+      for (int i = 0; i < this.height; i++) {
+        for (int j = 0; j < this.width; j++) {
+          board.set(i, j, generateRandomPiece());
+        } // for
       } // for
-    } // for
+    } // if 
   } // GameBoard(int, int)
 
   // +---------+----------------------------------------------------

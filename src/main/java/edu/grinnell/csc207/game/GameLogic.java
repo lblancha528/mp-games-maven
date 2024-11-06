@@ -193,5 +193,15 @@ public class GameLogic {
     }
   } // runGravity()
 
+/** 
+ * Combined steps of check for 3 in a row, delete all 3 in a rows, and apply gravity. 
+ * Loops until no 3 in a rows exist.
+ */
+public void checkRemoveGravity() {
+  while (removeSet() == 1) {
+    removeSet();
+    runGravity();
+  } // while
+} // checkRemoveGravity()
 
 } // GameLogic
