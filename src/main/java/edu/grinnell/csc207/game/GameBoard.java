@@ -60,8 +60,8 @@ public class GameBoard {
     this.height = height;
     this.width = width;
     // fill out the board with the three elements randomly.
-    for (int i = 0; i < this.width; i++) {
-      for (int j = 0; j < this.height; j++) {
+    for (int i = 0; i < this.height; i++) {
+      for (int j = 0; j < this.width; j++) {
         board.set(i, j, generateRandomPiece());
       } // for
     } // for
