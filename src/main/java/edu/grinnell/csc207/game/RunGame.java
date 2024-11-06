@@ -46,10 +46,14 @@ public static void main(String args[]) {
   Scanner eyes = new Scanner(System.in);
   // print directions
   // prompt for height of board
-  height = eyes;
+  pen.println("Please enter number of rows you want for your board.");
+  height = eyes.nextLine().indexOf(0);
+
+  pen.println("Please enter number of columns you want for your board.");
   // prompt for width
-  width = eyes;
+  width = eyes.nextLine().indexOf(0);
   // build board and logic
+
   GameBoard board = new GameBoard(height, width);
   GameLogic logic = new GameLogic(board);
 
@@ -60,11 +64,17 @@ public static void main(String args[]) {
     int col = 0;
     int row = 0;
     //   prompt for col of desired piece
-    col = eyes;
+    pen.println("Please enter col of you desired change.");
+    col = eyes.nextLine().indexOf(0);
+
     // prompt for row
-    row = eyes;
+    pen.println("Please enter row of you desired change.");
+    row = eyes.nextLine().indexOf(0);
+
     //   prompt for direction to move
-    direction = eyes;
+    pen.println("Please enter direction you want to move to.");
+    direction = eyes.nextLine().charAt(0);
+
     if (logic.isValidMove(row, col, direction)) {
       logic.swapPieces(row, col, direction);
       logic.checkRemoveGravity();
@@ -73,6 +83,8 @@ public static void main(String args[]) {
       pen.println("Invalid move, please try again.");
     } // if
   } // while
+  pen.close();
+  eyes.close();
 } // main(String[])
 
 
