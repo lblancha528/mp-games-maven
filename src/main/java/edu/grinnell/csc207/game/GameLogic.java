@@ -67,8 +67,11 @@ public class GameLogic {
    * Checks if a proposed move is legal.
    *
    * @param row
+   *   the row of the piece to be moved
    * @param col
+   *   the column of the piece to be moved
    * @param direction
+   *   the direction said piece will move
    *
    * @return whether the proposed move is legal
    */
@@ -146,8 +149,11 @@ public class GameLogic {
    * Swaps a given piece with the piece in the given direction.
    *
    * @param row
+   *   the row of the piece to be moved
    * @param col
+   *   the column of the piece to be moved
    * @param direction
+   *   the direction said piece will move
    *
    * @pre isValidMove(row, col, direction) returns true
    */

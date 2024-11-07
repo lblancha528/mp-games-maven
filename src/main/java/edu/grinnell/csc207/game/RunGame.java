@@ -29,7 +29,7 @@ public class RunGame {
    * Prints all insructions and invalid messages, takes in user input for set-up
    * and moves, prints board state and score.
    * @param args
-   *   Command-line arguments
+   *   Command-line arguments, not used
    */
   public static void main(String[] args) {
     int height = 0;
@@ -45,13 +45,14 @@ public class RunGame {
         If a number smaller than 6 is provided, that dimension will default to 6.
 
         Each turn, select a piece by entering its column and row, and a direction to
-        move it. The goal is to make sets of 3 in a row of matching pieces. These
+        move it. The rows and columns are 0 indexed from the top left corner.
+        The goal is to make sets of 3 in a row of matching pieces. These
         will be removed and all pieces will fall to the bottom of the board.
 
         Continue making sets until there are no more possible moves that would
         make a set.
 
-        Your score is the amount of pieces you removed from the board.
+        Your score is the amount of pieces *you* removed from the board.
 
           """);
 
@@ -65,6 +66,7 @@ public class RunGame {
 
     logic.checkRemoveGravity();
     logic.board.printBoard();
+    int startScore = logic.board.remainingPieces;
 
     while (!logic.checkOver()) {
       char direction = '\0';
@@ -88,7 +90,7 @@ public class RunGame {
         pen.println("Invalid move, please try again.");
       } // if
     } // while
-    int score = (logic.board.height() * logic.board.width()) - logic.board.remainingPieces;
+    int score = startScore - logic.board.remainingPieces;
     pen.println("GAME OVER \n Your Score: " + score);
     pen.close();
     eyes.close();

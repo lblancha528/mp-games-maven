@@ -57,6 +57,7 @@ public class GameBoard {
 
   /**
    * Constructs a prefab 4x4 board.
+   * Created for debugging purposes, not used in real gameplay.
    * @param x any character
    */
   public GameBoard(char x) {
@@ -151,8 +152,11 @@ public class GameBoard {
    * Sets the specified value from the board.
    *
    * @param row
+   *   the row of the set piece
    * @param col
+   *   the column of the set piece
    * @param val
+   *   the value to be set
    */
   public void set(int row, int col, char val) {
     this.board.set(row, col, val);
@@ -162,7 +166,9 @@ public class GameBoard {
    * Gets the value corresponding to the specified row and col.
    *
    * @param row
+   *   the row of the piece to be looked up
    * @param col
+   *   the column of the piece to be looked up
    * @return the value at the index
    */
   public char get(int row, int col) {
@@ -173,6 +179,6 @@ public class GameBoard {
    * Prints the current game board status.
    */
   public void printBoard() {
-    Matrix.print(new PrintWriter(System.out, true), this.board);
+    Matrix.print(new PrintWriter(System.out, true), this.board, true);
   } // printBoard()
 } // class GameBoard
