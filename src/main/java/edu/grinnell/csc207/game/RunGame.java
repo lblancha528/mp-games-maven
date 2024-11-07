@@ -5,32 +5,33 @@ import java.util.Scanner;
 
 /**
  * This class handles the user interface and interactions.
- * 
+ *
  * @author Lily Blanchard
  * @author Natalie Nardone
  * @author Tiffany Yan
  */
 public class RunGame {
 
-  // * The possible directions. */
-  final char UP = 'u';
-  final char DOWN = 'd';
-  final char LEFT = 'l';
-  final char RIGHT = 'r';
+  // +--------+------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-  // main
-  // build board
-  // logic takes a board as param, saves as field
-  // build logic that builds -> with config info
-  // handles user input -> uses gameLogic to handle user commands
+  /** Direction up. */
+  final char up = 'u';
+  /** Direction down. */
+  final char down = 'd';
+  /** Direction left. */
+  final char left = 'l';
+  /** Direction right. */
+  final char right = 'r';
 
-  // space is null character for removed pieces
-
-  /*
-   * while checkOver = false { get user input do move for { do (remove) while (remove = 1 ie did
-   * remove something) do gravity } }
+  /**
+   * Prints all insructions and invalid messages, takes in user input for set-up
+   * and moves, prints board state and score.
+   * @param args
+   *   Command-line arguments
    */
-  public static void main(String args[]) {
+  public static void main(String[] args) {
     int height = 0;
     int width = 0;
 
@@ -38,15 +39,17 @@ public class RunGame {
     Scanner eyes = new Scanner(System.in);
 
     pen.print("""
-        Welcome to Letter Drop, single player
+                          Welcome to Single-Player Letter Drop
 
         To start, provide a width and height for the game board, with a minimum of 6.
+        If a number smaller than 6 is provided, that dimension will default to 6.
 
-        Each turn, select a piece by entering its column and row, and a direction to move it.
-        The goal is to make sets of 3 in a row of matching pieces. These will be removed
-        and all pieces will fall to the bottom of the board.
+        Each turn, select a piece by entering its column and row, and a direction to
+        move it. The goal is to make sets of 3 in a row of matching pieces. These
+        will be removed and all pieces will fall to the bottom of the board.
 
-        Continue making sets until there are no more possible moves that would make a set.
+        Continue making sets until there are no more possible moves that would
+        make a set.
 
         Your score is the amount of pieces you removed from the board.
 
@@ -58,7 +61,6 @@ public class RunGame {
     width = Integer.parseInt(eyes.nextLine());
 
     GameBoard board = new GameBoard(height, width);
-    // GameBoard board = new GameBoard('a');
     GameLogic logic = new GameLogic(board);
 
     logic.checkRemoveGravity();
@@ -91,6 +93,4 @@ public class RunGame {
     pen.close();
     eyes.close();
   } // main(String[])
-
-
 } // RunGame()

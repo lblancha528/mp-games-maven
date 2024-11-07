@@ -3,39 +3,39 @@ package edu.grinnell.csc207.game;
 /**
  * This class handles the game board status effects including checking when the game is over,
  * checking if a move is valid, and executing that move.
- * 
+ *
  * @author Lily Blanchard
  * @author Natalie Nardone
  * @author Tiffany Yan
  */
 public class GameLogic {
-  // field that is the board
-  // check if game is over
-  // check if move is valid
-  // gravity??
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
 
-  // * A board that represents the game status. */
+  /** A board that represents the game status. */
   GameBoard board;
 
-  // * The possible directions. */
-  final char UP = 'u';
-  final char DOWN = 'd';
-  final char LEFT = 'l';
-  final char RIGHT = 'r';
+  /** Direction up. */
+  final char up = 'u';
+  /** Direction down. */
+  final char down = 'd';
+  /** Direction left. */
+  final char left = 'l';
+  /** Direction right. */
+  final char right = 'r';
 
   // +--------------+-----------------------------------------------
   // | Constructors |
   // +--------------+
   /**
    * Builds a new game logic.
-   * 
-   * @param board a GameBoard object to represent the game
+   *
+   * @param boardInit
+   *   a GameBoard object to represent the game
    */
-  public GameLogic(GameBoard board) {
-    this.board = board;
+  public GameLogic(GameBoard boardInit) {
+    this.board = boardInit;
   } // GameLogic
 
   // +---------+----------------------------------------------------
@@ -44,38 +44,38 @@ public class GameLogic {
 
   /**
    * Checks if there are any valid moves left.
-   * 
+   *
    * @return whether there are valid moves left
    */
   public boolean checkOver() {
-    char[] directions = {UP, DOWN, LEFT, RIGHT};
+    char[] directions = {up, down, left, right};
     for (int i = 0; i < board.height(); i++) {
       for (int j = 0; j < board.width(); j++) {
         if (this.board.get(i, j) != ' ') {
           for (int k = 0; k < directions.length; k++) {
             if (this.isValidMove(i, j, directions[k])) {
               return false;
-            }
-          }
-        }
-      }
-    }
+            } // if
+          } // for
+        } // if
+      } // for
+    } // for
     return true;
   } // checkOver()
 
   /**
    * Checks if a proposed move is legal.
-   * 
+   *
    * @param row
    * @param col
    * @param direction
-   * 
+   *
    * @return whether the proposed move is legal
    */
   public boolean isValidMove(int row, int col, char direction) {
-    if (((row == 0) && (direction == UP)) || ((row == board.height() - 1) && (direction == DOWN))
-        || ((col == 0) && (direction == LEFT))
-        || ((col == board.width() - 1) && (direction == RIGHT)) || ((row < 0))
+    if (((row == 0) && (direction == up)) || ((row == board.height() - 1) && (direction == down))
+        || ((col == 0) && (direction == left))
+        || ((col == board.width() - 1) && (direction == right)) || ((row < 0))
         || ((row >= board.height())) || ((col < 0)) || ((col >= board.width()))) {
       return false;
     } else {
@@ -84,22 +84,11 @@ public class GameLogic {
       int newRow = 0;
       int newCol = 0;
       switch (direction) {
-        case UP:
-          newCol = col;
-          newRow = row - 1;
-          break;
-        case DOWN:
-          newCol = col;
-          newRow = row + 1;
-          break;
-        case LEFT:
-          newRow = row;
-          newCol = col - 1;
-          break;
-        case RIGHT:
-          newRow = row;
-          newCol = col + 1;
-          break;
+        case up: newCol = col; newRow = row - 1; break;
+        case down: newCol = col; newRow = row + 1; break;
+        case left: newRow = row; newCol = col - 1; break;
+        case right: newRow = row; newCol = col + 1; break;
+        default: break;
       } // switch
       // temporarily swap pieces.
       this.swapPieces(row, col, direction);
@@ -147,29 +136,19 @@ public class GameLogic {
         } // if
       } // if
 
-      // if failed, swap back
+      // swap back
       this.swapPieces(row, col, direction);
       return false;
-
-      /*
-       * // if 1 and 2 up if (((board.get(newRow + 1, newCol) == first) && (board.get(newRow + 2,
-       * newCol) == first)) || ((board.get(newRow - 1, newCol) == first) && (board.get(newRow - 2,
-       * newCol) == first)) || ((board.get(newRow, newCol + 1) == first) && (board.get(newRow,
-       * newCol + 2) == first)) || ((board.get(newRow, newCol - 1) == first) && (board.get(newRow,
-       * newCol - 2) == first)) || ((board.get(newRow + 1, newCol) == first) && (board.get(newRow -
-       * 1, newCol) == first)) || ((board.get(newRow, newCol + 1) == first) && (board.get(newRow,
-       * newCol - 1) == first))) { return true; } else { return false; }
-       */
-    }
+    } // if
   } // checkMove(int, int, char)
 
   /**
    * Swaps a given piece with the piece in the given direction.
-   * 
+   *
    * @param row
    * @param col
    * @param direction
-   * 
+   *
    * @pre isValidMove(row, col, direction) returns true
    */
   public void swapPieces(int row, int col, char direction) {
@@ -177,23 +156,12 @@ public class GameLogic {
     int newRow = 0;
     int newCol = 0;
     switch (direction) {
-      case UP:
-        newCol = col;
-        newRow = row - 1;
-        break;
-      case DOWN:
-        newCol = col;
-        newRow = row + 1;
-        break;
-      case LEFT:
-        newRow = row;
-        newCol = col - 1;
-        break;
-      case RIGHT:
-        newRow = row;
-        newCol = col + 1;
-        break;
-    }
+      case up: newCol = col; newRow = row - 1; break;
+      case down: newCol = col; newRow = row + 1; break;
+      case left: newRow = row; newCol = col - 1; break;
+      case right: newRow = row; newCol = col + 1; break;
+      default: break;
+    } // switch
     char second = board.get(newRow, newCol);
     board.set(row, col, second);
     board.set(newRow, newCol, first);
@@ -201,7 +169,7 @@ public class GameLogic {
 
   /**
    * Finds and removes the first row or column of 3 or more matching pieces in a row.
-   * 
+   *
    * @return 0 if no set was removed, 1 if a set was removed
    */
   public int removeSet() {
@@ -219,14 +187,14 @@ public class GameLogic {
               board.set(i + 2, j, ' ');
               board.remainingPieces -= 3;
               return 1;
-            }
+            } // if
             if ((board.get(i, j + 1) == cur) && (board.get(i, j + 2) == cur)) {
               board.set(i, j, ' ');
               board.set(i, j + 1, ' ');
               board.set(i, j + 2, ' ');
               board.remainingPieces -= 3;
               return 1;
-            }
+            } // if
           } else if ((i < midRow) && (j >= midCol)) {
             if ((board.get(i + 1, j) == cur) && (board.get(i + 2, j) == cur)) {
               board.set(i, j, ' ');
@@ -234,7 +202,7 @@ public class GameLogic {
               board.set(i + 2, j, ' ');
               board.remainingPieces -= 3;
               return 1;
-            }
+            } // if
           } else if ((i >= midRow) && (j < midCol)) {
             if ((board.get(i, j + 1) == cur) && (board.get(i, j + 2) == cur)) {
               board.set(i, j, ' ');
@@ -242,13 +210,13 @@ public class GameLogic {
               board.set(i, j + 2, ' ');
               board.remainingPieces -= 3;
               return 1;
-            }
+            } // if
           } else {
             continue;
-          }
-        }
-      }
-    }
+          } // if
+        } // if
+      } // for
+    } // for
     return 0;
   } // removeSet()
 
@@ -283,7 +251,6 @@ public class GameLogic {
     while (status == 1) {
       status = this.removeSet();
       this.runGravity();
-    }
+    } // while
   } // checkRemoveGravity()
-
 } // GameLogic
