@@ -7,8 +7,8 @@ import edu.grinnell.csc207.util.Matrix;
 import edu.grinnell.csc207.util.MatrixV0;
 
 /**
- * This class houses the game board matrix and the functions that 
- *   interact with the matrix directly.
+ * This class houses the game board matrix and the functions that interact with the matrix directly.
+ * 
  * @author Lily Blanchard
  * @author Natalie Nardone
  * @author Tiffany Yan
@@ -33,8 +33,11 @@ public class GameBoard {
   int width;
 
   /** Default dimensions for board. */
-  static int DEFAULT_HEIGHT = 6;
-  static int DEFAULT_WIDTH = 6;
+  static int DEFAULT_HEIGHT = 4;
+  static int DEFAULT_WIDTH = 4;
+
+  /** How many game pieces are left on the board. */
+  int remainingPieces = 0;
 
   // +--------------+-----------------------------------------------
   // | Constructors |
@@ -47,6 +50,29 @@ public class GameBoard {
     new GameBoard(DEFAULT_WIDTH, DEFAULT_HEIGHT);
   } // GameBoard()
 
+  public GameBoard(char x) {
+    this.width = 4;
+    this.height = 4;
+    this.board = new MatrixV0(width, height, ' ');
+    board.set(0, 0, 'X');
+    board.set(0, 1, 'X');
+    board.set(0, 2, 'O');
+    board.set(0, 3, 'O');
+    board.set(1, 0, 'T');
+    board.set(1, 1, 'O');
+    board.set(1, 2, 'X');
+    board.set(1, 3, 'T');
+    board.set(2, 0, 'T');
+    board.set(2, 1, 'X');
+    board.set(2, 2, 'O');
+    board.set(2, 3, 'X');
+    board.set(3, 0, 'T');
+    board.set(3, 1, 'T');
+    board.set(3, 2, 'T');
+    board.set(3, 3, 'X');
+    this.remainingPieces = this.height * this.width;
+  } // GameBoard(char)
+
   /**
    * Constructs a new game board with user provided dimensions.
    * 
@@ -54,19 +80,20 @@ public class GameBoard {
    * @param width the provided width of the game board
    */
   public GameBoard(int height, int width) {
-    if (width < 6 || height < 6) {
+    if (width < 4 || height < 4) {
       new GameBoard();
     } else {
       this.board = new MatrixV0(width, height, ' ');
       this.height = height;
       this.width = width;
+      this.remainingPieces = this.height * this.width;
       // fill out the board with the three elements randomly.
       for (int i = 0; i < this.height; i++) {
         for (int j = 0; j < this.width; j++) {
           board.set(i, j, generateRandomPiece());
         } // for
       } // for
-    } // if 
+    } // if
   } // GameBoard(int, int)
 
   // +---------+----------------------------------------------------
@@ -130,8 +157,8 @@ public class GameBoard {
    * @return the value at the index
    */
   public char get(int row, int col) {
-    return (char)this.board.get(row,col);
-  } //get
+    return (char) this.board.get(row, col);
+  } // get
 
   /**
    * Prints the current game board status.

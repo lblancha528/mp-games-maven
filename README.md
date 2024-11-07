@@ -27,3 +27,5 @@ Source:
 
 This code may be found at <https://github.com/lblancha528/mp-games-maven>. 
 It is based on code found at <https://github.com/Grinnell-CSC207/mp-games-maven>.
+
+* RESET MIN HEIGHT WIDTH TO 6
