@@ -37,42 +37,37 @@ public class RunGame {
   }
     */
 public static void main(String args[]) {
-  GameBoard newBoard = new GameBoard(6, 8);
-  newBoard.printBoard();
   int height = 0;
   int width = 0;
 
   PrintWriter pen = new PrintWriter(System.out, true);
   Scanner eyes = new Scanner(System.in);
-  // print directions
-  // prompt for height of board
-  pen.println("Please enter number of rows you want for your board.");
-  height = eyes.nextLine().indexOf(0);
 
-  pen.println("Please enter number of columns you want for your board.");
-  // prompt for width
-  width = eyes.nextLine().indexOf(0);
-  // build board and logic
+  pen.print("Intro and Instruction here. /n");
+
+  pen.println("Please enter number of rows you want for your board. Minimum height is 6.");
+  height = Integer.parseInt(eyes.nextLine());
+  pen.println("Please enter number of columns you want for your board. Minimum width is 6.");
+  width = Integer.parseInt(eyes.nextLine());
 
   GameBoard board = new GameBoard(height, width);
   GameLogic logic = new GameLogic(board);
 
-  logic.checkRemoveGravity();
+  //logic.checkRemoveGravity();
+  board.printBoard();
 
-  while (!logic.checkOver()) {
+  //while (!logic.checkOver()) {
     char direction = '\0';
     int col = 0;
     int row = 0;
-    //   prompt for col of desired piece
+
     pen.println("Please enter col of you desired change.");
-    col = eyes.nextLine().indexOf(0);
+    col = Integer.parseInt(eyes.nextLine());
 
-    // prompt for row
     pen.println("Please enter row of you desired change.");
-    row = eyes.nextLine().indexOf(0);
+    row = Integer.parseInt(eyes.nextLine());
 
-    //   prompt for direction to move
-    pen.println("Please enter direction you want to move to.");
+    pen.println("Please enter direction you want to move to. Valid directions are u, d, l, r.");
     direction = eyes.nextLine().charAt(0);
 
     if (logic.isValidMove(row, col, direction)) {
@@ -82,7 +77,7 @@ public static void main(String args[]) {
     } else {
       pen.println("Invalid move, please try again.");
     } // if
-  } // while
+  //} // while
   pen.close();
   eyes.close();
 } // main(String[])

@@ -50,13 +50,11 @@ public class GameBoard {
   /**
    * Constructs a new game board with user provided dimensions.
    * 
-   * @pre Minimum height or width of 4.
-   * 
    * @param height the provided height of the game board
    * @param width the provided width of the game board
    */
   public GameBoard(int height, int width) {
-    if (width < 4 || height < 4) {
+    if (width < 6 || height < 6) {
       new GameBoard();
     } else {
       this.board = new MatrixV0(width, height, ' ');

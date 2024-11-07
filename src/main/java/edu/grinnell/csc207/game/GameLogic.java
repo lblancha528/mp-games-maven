@@ -88,6 +88,58 @@ public class GameLogic {
       }
       char second = board.get(newRow, newCol);
 
+      // if coord is at least 1 away from top, do check single up
+      if (row >= 1) {
+        if ((board.get(newRow + 1, newCol) == first) && (board.get(newRow - 1, newCol) == first)) {
+          return true;
+        } // if 
+      } // if
+      // if at least 2 from top, check double up
+      if (row >= 2) {
+        if ((board.get(newRow, newCol - 1) == first) && (board.get(newRow, newCol - 2) == first)) {
+          return true;
+        } // if
+      } // if
+      // if coord is at least 1 away from bottom, check single down
+      if (row <= this.board.height() - 1) {
+        if ((board.get(newRow + 1, newCol) == first) && (board.get(newRow - 1, newCol) == first)) {
+          return true;
+        } // if
+      } // if
+      // if 2+ from bottom, check double down
+      if (row <= this.board.height() - 2) {
+        if ((board.get(newRow + 1, newCol) == first) && (board.get(newRow + 2, newCol) == first)) {
+          return true;
+        } // if
+      } // if
+      // if 1+ from left , check single left
+      if (col >= 1) {
+        if ((board.get(newRow, newCol + 1) == first) && (board.get(newRow, newCol - 1) == first)) {
+          return true;
+        } // if
+      } // if
+      // if 2+ from left, check double left
+      if (col >= 2) {
+        if ((board.get(newRow, newCol - 1) == first) && (board.get(newRow, newCol - 2) == first)) {
+          return true;
+        } // if
+      } // if
+      // if 1+ from right, check single right
+      if (col <= this.board.width() - 1) {
+        if ((board.get(newRow, newCol + 1) == first) && (board.get(newRow, newCol - 1) == first)) {
+          return true;
+        } // if
+      } // if
+      // if 2+ from right, check double right
+      if (col <= this.board.width() - 2) {
+        if ((board.get(newRow, newCol + 1) == first) && (board.get(newRow, newCol + 2) == first)) {
+          return true;
+        } // if
+      } // if
+
+      return false;
+      
+      /* 
       // if 1 and 2 up
       if (((board.get(newRow + 1, newCol) == first) && (board.get(newRow + 2, newCol) == first)) ||
         ((board.get(newRow - 1, newCol) == first) && (board.get(newRow - 2, newCol) == first)) ||
@@ -99,6 +151,7 @@ public class GameLogic {
       } else {
         return false;
       }
+        */
     }
   } // checkMove(int, int, char)
 
@@ -186,11 +239,11 @@ public class GameLogic {
               board.set(row, col, newChar);
               board.set(x, col, current);
               break;
-            }
-          }
-        }
-      }
-    }
+            } // if
+          } // for
+        } // if
+      } // for
+    } // for
   } // runGravity()
 
 /** 
@@ -198,9 +251,9 @@ public class GameLogic {
  * Loops until no 3 in a rows exist.
  */
 public void checkRemoveGravity() {
-  while (removeSet() == 1) {
-    removeSet();
-    runGravity();
+  while (this.removeSet() == 1) {
+    this.removeSet();
+    this.runGravity();
   } // while
 } // checkRemoveGravity()
 
