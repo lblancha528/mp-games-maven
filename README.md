@@ -20,6 +20,7 @@ Continue making sets until there are no more possible moves that would make
 a set. Your score is the amount of pieces you removed from the board.
 
 Acknowledgements:
+Lily has provided the code for her implementation Matrix.java and MatrixVO.java & she has permitted of us using the code.
 - Tuesday 11/5: Teams help from SamR with print funtions
                 Evening tutors: Ishita and Avash
 - Wednesday 11/6: Evening Tutors: Alma and Boston
